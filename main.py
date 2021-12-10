@@ -27,16 +27,8 @@ mixer.music.play(-1)
 #Musiktitel Copyright: Zombie Invasion (2015) - GEMAfreie Musik von https://audiohub.de
 #Rough draft - GEMAfreie Musik von https://audiohub.de
 #All over now - GEMAfreie Musik von https://audiohub.de
-# Icon
-# (by pixel buddha on https://www.flaticon.com/free-icon/
-# ufo_214358?term=spaceships&page=1&position=2&page=1&position=2&related_id=214358&origin=search
-# spaceship Icon (by https://www.flaticon.com/authors/photo3idea-studio)
-# enemy https://www.flaticon.com/free-icon/
-# alien_3306574?term=alien&page=1&position=6&page=1&position=6&related_id=3306574&origin=search
-# space background from <a href='https://www.freepik.com/vectors/----------------------<- kann wech
-# background'>Background vector created by freepik - www.freepik.com</a>
-# bullet from https://www.flaticon.com/free-icon/
-# bullet_224681?term=bullet&page=1&position=1&page=1&position=1&related_id=224681&origin=search
+# Grafics -Peggy Kleinert
+# tutorial: https://www.youtube.com/watch?v=FfWpgLFMI7w
 
 pygame.display.set_caption("Mystery Invaders")
 icon = pygame.image.load('images/ship_32.png')
@@ -57,11 +49,13 @@ enemyY_change = []
 num_of_enemies = 5
 
 for i in range(num_of_enemies):
-    enemyImg.append(pygame.image.load('images/feind_eins.png'))
-    enemyX.append(random.randint(0, 835))
-    enemyY.append(random.randint(25, 150))
-    enemyX_change.append(4)
-    enemyY_change.append(40)
+    enemyImg.append(pygame.image.load('images/feind_1_80.png'))
+    enemyImg.append(pygame.image.load('images/feind_2_80.png'))
+    enemyImg.append(pygame.image.load('images/feind_3_80.png'))
+    enemyX.append(random.randint(0, 750))
+    enemyY.append(random.randint(25, 250))
+    enemyX_change.append(1)
+    enemyY_change.append(80)
 
 # Ready = you cant see the bullet on the screen
 # Fire = bullet is currently moving - so two states motion versus non motion
@@ -178,7 +172,7 @@ while running:
         # Collision
         collision = isCollision(enemyX[i], enemyY[i], bulletX, bulletY)
         if collision:
-            explosion_Sound = mixer.Sound('explosion.wav')
+            explosion_Sound = mixer.Sound('sound/explosion.wav')
             explosion_Sound.play()
             bulletY = 780
             bullet_state = "ready"
