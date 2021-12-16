@@ -35,7 +35,7 @@ icon = pygame.image.load('images/ship_32.png')
 pygame.display.set_icon(icon)
 
 # player
-playerImg = pygame.image.load('images/ship_90.png')
+playerImg = pygame.image.load('images/krebsmonster_100.png')
 playerX = 420
 playerY = 780
 playerX_change = 0
@@ -49,9 +49,10 @@ enemyY_change = []
 num_of_enemies = 5
 
 for i in range(num_of_enemies):
-    enemyImg.append(pygame.image.load('images/feind_1_80.png'))
-    enemyImg.append(pygame.image.load('images/feind_2_80.png'))
-    enemyImg.append(pygame.image.load('images/feind_3_80.png'))
+    enemyImg.append(pygame.image.load('images/monster_80.png'))
+    enemyImg.append(pygame.image.load('images/schaf_80.png'))
+    enemyImg.append(pygame.image.load('images/feind_blau_80.png'))
+    # randomly appended enemies at random coordinates
     enemyX.append(random.randint(0, 750))
     enemyY.append(random.randint(25, 250))
     enemyX_change.append(1)
