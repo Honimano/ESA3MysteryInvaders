@@ -14,27 +14,38 @@ class Game:
         pygame.display.set_icon(icon)
         self.display = pygame.Surface((self.DISPLAY_W, self.DISPLAY_H))
         self.window = pygame.display.set_mode((self.DISPLAY_W, self.DISPLAY_H))
-        self.font_name = 'fonts/8-BIT WONDER.TTF'
+        self.font_name1 = 'fonts/8-BIT WONDER.TTF'
+        self.font_name2 = 'fonts/FreeSansBold.ttf'
         # getter for default font
         # self.font = pygame.font.get_default_font()
         self.BACKGROUND = (125, 150, 50)
+        self.background_img = pygame.image.load('images/heroes/krebsmonster_200.png')
         self.TEXT_COLOR = (250, 250, 250)
+        self.text_color_main_line = (150, 50, 200)
         # til here game object
         # game passes itself as a parameter into the MainMenu class
         self.main_menu = MainMenu(self)
         self.current_level = None
         self.level2 = MainMenu(self)
         self.level3 = MainMenu(self)
-        self.options = OptionsMenu(self)
-        self.credits = CreditsMenu(self)
+        # self.options = GameInstructionsMenu(self)
+        # self.credits = CreditsMenu(self)
         self.curr_menu = self.main_menu
 
 # game loop level1
     def game_loop(self):
         self.current_level.load()
         self.current_level.game_loop(self.window)
+        """if self.START_KEY:
+                self.playing = False
 
-
+            # reset canvas in painting it a color
+            self.display.fill(self.BACKGROUND)
+            self.draw_text('Thanks for Playing', 40, self.DISPLAY_W / 2, self.DISPLAY_H / 2)
+            self.window.blit(self.display, (0, 0))
+            # shows physically the image on the screen
+            pygame.display.update()
+            self.reset_keys()"""
 
 # game events - player actions, pressed Keys
 
@@ -61,9 +72,28 @@ class Game:
     def reset_keys(self):
         self.UP_KEY, self.DOWN_KEY, self.START_KEY, self.BACK_KEY = False, False, False, False
 
-    def draw_text(self, text, size, x, y):
-        font = pygame.font.Font(self.font_name, size)
-        text_surface = font.render(text, True, self.TEXT_COLOR)
+    def draw_text_menu(self, text, size, x, y):
+        font_menu = pygame.font.Font(self.font_name1, size)
+        text_surface = font_menu.render(text, True, self.TEXT_COLOR)
         text_rect = text_surface.get_rect()
         text_rect.center = (x, y)
         self.display.blit(text_surface, text_rect)
+
+    def draw_text_explain(self, text, size, x, y):
+        font_text_explain = pygame.font.Font(self.font_name2, size)
+        text_surface = font_text_explain.render(text, True, self.TEXT_COLOR)
+        text_rect = text_surface.get_rect()
+        text_rect.center = (x, y)
+        self.display.blit(text_surface, text_rect)
+
+    def draw_text_main_line(self, text, size, x, y):
+        font_text_main_line = pygame.font.Font(self.font_name1, size)
+        text_surface = font_text_main_line.render(text, True, self.text_color_main_line)
+        text_rect = text_surface.get_rect()
+        text_rect.center = (x, y)
+        self.display.blit(text_surface, text_rect)
+
+
+
+
+
