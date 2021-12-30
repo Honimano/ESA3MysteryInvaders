@@ -110,11 +110,12 @@ class Enemy(GameObject):
 
 
 class Level:
-    def __init__(self, background_image_name, background_music_name, num_of_enemies):
+    def __init__(self, background_image_name, background_music_name, num_of_enemies, enemy_img_one, enemy_img_two, enemy_img_three, hero):
         self.background_image_name = background_image_name
         self.background_music_name = background_music_name
         self.num_of_enemies = num_of_enemies
-        self.enemy_images = ['images/foes/monster_80.png', 'images/foes/schaf_80.png', 'images/foes/feind_blau_80.png']
+        self.enemy_images = [enemy_img_one, enemy_img_two, enemy_img_three]
+        self.player_image = hero
 
         self.background_img = None
         self.game_over_font = None
@@ -125,7 +126,7 @@ class Level:
 
     def load(self):
         # player
-        self.player.load('images/heroes/krebsmonster_100.png')
+        self.player.load(self.player_image)
         self.player.bullet.load('images/laser/wurfdonat_32.png')
 
         # enemies

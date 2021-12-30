@@ -98,24 +98,25 @@ class MainMenu(Menu):
     def check_input(self):
         self.move_cursor()
         if self.game.START_KEY:
+            # changing attributes per level:  background_image_name, background_music_name, num_of_enemies, enemy_img_one, enemy_img_two, enemy_img_three, hero
             if self.state == 'Start Game Level 1':
                 self.game.playing = True
                 self.game.current_level = Level(
                     'images/backgrounds/unterwasser1.png',
-                    'sound/background_funny_puppies.wav',
-                    5)
+                    'sound/background_zombie.wav',
+                    5, 'images/foes/feind_blau_80.png', 'images/foes/feind_blau_80.png','images/foes/feind_blau_80.png' , 'images/heroes/krebsmonster_100.png')
             elif self.state == 'Start Game Level 2':
                 self.game.playing = True
                 self.game.current_level = Level(
                     'images/backgrounds/schafwiese_900.png',
-                    'sound/background_zombie.wav',
-                    8)
+                    'sound/background_funny_puppies.wav',
+                    8, 'images/foes/schaf_orange.png', 'images/foes/schaf_orange.png', 'images/foes/schaf_orange.png', 'images/heroes/schaf_ship.png')
             elif self.state == 'Start Game Level 3':
                 self.game.playing = True
                 self.game.current_level = Level(
                     'images/backgrounds/hoehle_900.png',
                     'sound/background_rough.wav',
-                    12)
+                    12, 'images/foes/feind4_80.png', 'images/foes/feind4_80.png', 'images/foes/monster_80.png','images/heroes/krebsmonster_100.png' )
             elif self.state == 'Options':
                 self.game.curr_menu = self.game.options
             elif self.state == 'Credits':
