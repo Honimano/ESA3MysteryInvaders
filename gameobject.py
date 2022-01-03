@@ -3,7 +3,6 @@ import random
 from enum import Enum
 
 
-
 class GameObject:
     def __init__(self, x, y, x_change, y_change):
         self.x = x
@@ -22,9 +21,11 @@ class GameObject:
     def show(self, screen):
         screen.blit(self.img, (self.x, self.y))
 
+
 class BulletState(Enum):
     READY = 1
     FIRE = 2
+
 
 class Bullet(GameObject):
     img = None
@@ -111,4 +112,3 @@ class Enemy(GameObject):
     def reset(self):
         self.x = random.randint(0, 735)
         self.y = random.randint(50, 150)
-

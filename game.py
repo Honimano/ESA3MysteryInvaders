@@ -28,7 +28,7 @@ class Game:
         self.level3 = MainMenu(self)
         self.curr_menu = self.main_menu
 
-# game loop level1
+# game loop levels
     def game_loop(self):
         self.current_level.load()
         self.current_level.game_loop(self.window)

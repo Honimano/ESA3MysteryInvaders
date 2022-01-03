@@ -29,7 +29,6 @@ class Level:
         self.game_over_font = None
         self.enemies = []
         self.running = False
-
         self.player = Player(bullet_speed)
         self.score = Score()
 
