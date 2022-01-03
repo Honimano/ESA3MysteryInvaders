@@ -1,5 +1,9 @@
 # ESA3MysteryInvaders
 ESA3
+
+
+
+
 # this is a study project to program "space invaders"
 # it was programmed in python 3.1, using pycharm and pygame
 # functionality:
