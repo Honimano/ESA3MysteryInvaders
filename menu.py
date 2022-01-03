@@ -50,16 +50,18 @@ class MainMenu(Menu):
 
             # draw texts on screen
             self.game.draw_text_main_line('Welcome to Mysteryinvaders', 32, self.game.DISPLAY_W / 2,
-                                          self.game.DISPLAY_H / 2 - 300)
-            self.game.draw_text_menu('Game Instructions', 30, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 225)
+                                          self.game.DISPLAY_H / 2 - 350)
+            self.game.draw_text_menu('Game Instructions', 30, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 290)
             self.game.draw_text_explain('The Hero can move left:  push <, left arrow',
-                                        15, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 175)
+                                        15, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 240)
             self.game.draw_text_explain('The Hero can move right: push >, right arrow',
-                                        15, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 150)
+                                        15, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 210)
             self.game.draw_text_explain('The Hero can shoot a bullet: push space',
-                                        15, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 125)
-            self.game.draw_text_menu('Main Menu', 30, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 80)
+                                        15, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 180)
+            self.game.draw_text_menu('Main Menu', 30, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 120)
             self.game.draw_text_explain('You can move through the menu with up arrow and down arrow.',
+                                        15, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 70)
+            self.game.draw_text_explain('Push "return" to start gamelevel.',
                                         15, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 40)
             self.game.draw_text_explain(
                 'Use the cross at the game window to close window and go back to menu when game is over.',
@@ -83,13 +85,6 @@ class MainMenu(Menu):
             elif self.state == 'Start Game Level 2':
                 self.cursor_rect.midtop = (self.level3_x + self.offset, self.level3_y)
                 self.state = 'Start Game Level 3'
-            # elif self.state == 'Start Game Level 3':
-            # self.cursor_rect.midtop = (self.game_instructions_x + self.offset, self.game_instructions_y)
-            # self.state = 'Game Instructions'
-            # elif self.state == 'Game Instructions':
-            # self.cursor_rect.midtop = (self.credit_x + self.offset, self.credit_y)
-            # self.state = 'Credits'
-            # elif self.state == 'Credits':
             elif self.state == 'Start Game Level 3':
                 self.cursor_rect.midtop = (self.level1_x + self.offset, self.level1_y)
                 self.state = 'Start Game Level 1'
@@ -103,18 +98,10 @@ class MainMenu(Menu):
             elif self.state == 'Start Game Level 1':
                 self.cursor_rect.midtop = (self.level3_x + self.offset, self.level3_y)
                 self.state = 'Start Game Level 3'
-        #  elif self.state == 'Game Instructions':
-        # self.cursor_rect.midtop = (self.level3_x + self.offset, self.level3_y)
-        # self.state = 'Start Game Level 3'
-        # elif self.state == 'Credits':
-        # self.cursor_rect.midtop = (self.game_instructions_x + self.offset, self.game_instructions_y)
-        # self.state = 'Game Instructions'
 
     def check_input(self):
         self.move_cursor()
         if self.game.START_KEY:
-            # changing attributes per level:  background_image_name, background_music_name,
-            # num_of_enemies, enemy_img_one, enemy_img_two, enemy_img_three, hero
             if self.state == 'Start Game Level 1':
                 self.game.playing = True
                 self.game.current_level = Level(
@@ -123,7 +110,8 @@ class MainMenu(Menu):
                     5, 'images/foes/feind_blau_80.png',
                     'images/foes/feind_blau_80.png',
                     'images/foes/feind_blau_80.png',
-                    'images/heroes/krebsmonster_100.png')
+                    'images/heroes/krebsmonster_120.png',
+                    -3)
             elif self.state == 'Start Game Level 2':
                 self.game.playing = True
                 self.game.current_level = Level(
@@ -132,7 +120,7 @@ class MainMenu(Menu):
                     8, 'images/foes/schaf_orange.png',
                     'images/foes/schaf_orange.png',
                     'images/foes/schaf_orange.png',
-                    'images/heroes/schaf_ship.png')
+                    'images/heroes/schaf_ship.png', -2)
             elif self.state == 'Start Game Level 3':
                 self.game.playing = True
                 self.game.current_level = Level(
@@ -141,7 +129,7 @@ class MainMenu(Menu):
                     12, 'images/foes/feind5_80.png',
                     'images/foes/feind5_80.png',
                     'images/foes/feind5_80.png',
-                    'images/foes/monster_80.png')
+                    'images/heroes/monster_grün_pfote_120.png', -1)
             elif self.state == 'Options':
                 self.game.curr_menu = self.game.options
             elif self.state == 'Credits':
@@ -150,73 +138,3 @@ class MainMenu(Menu):
             self.run_display = False
 
 
-"""
-# options menu -> Volume ->Controls -> potientially - but maybe no need- not enough time >.<
-class OptionsMenu(Menu):
-    def __init__(self, game):
-        Menu.__init__(self, game)
-        self.state = 'Volume'
-        self.vol_x, self.vol_y = self.mid_w, self.mid_h + 20
-        self.controls_x, self.controls_y = self.mid_w, self.mid_h + 40
-        self.cursor_rect.midtop = (self.vol_x + self.offset, self.vol_y)
-
-    def display_menu(self):
-        self.run_display = True
-        while self.run_display:
-            self.game.check_events()
-            self.check_input()
-            self.game.display.fill((25, 25, 25))
-            self.game.draw_text("Options", 30, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 50)
-            self.game.draw_text("Volume", 20, self.vol_x, self.vol_y)
-            self.game.draw_text("Controls", 20, self.controls_x, self.controls_y)
-            self.draw_cursor()
-            self.blit_screen()
-
-    def check_input(self):
-        if self.game.BACK_KEY:
-            self.game.curr_menu = self.game.main_menu
-            self.run_display = False
-        elif self.game.UP_KEY or self.game.DOWN_KEY:
-            if self.state == 'Volume':
-                self.state = 'Controls'
-                self.cursor_rect.midtop = (self.controls_x + self.offset, self.controls_y)
-            elif self.state == 'Controls':
-                self.state = 'Volume'
-                self.cursor_rect.midtop = (self.vol_x + self.offset, self.vol_y)
-        elif self.game.START_KEY:
-            # todo: create a Volume Menu and a Controls Menu
-            pass
-"""
-
-"""class GameInstructionsMenu(Menu):
-    def __init__(self, game):
-        Menu.__init__(self, game)
-
-    def display_menu(self):
-        self.run_display = True
-        while self.run_display:
-            self.game.check_events()
-            if self.game.START_KEY or self.game.BACK_KEY:
-                self.game.curr_menu = self.game.main_menu
-                self.run_display = False
-            self.game.display.fill(self.game.BACKGROUND)
-            self.game.draw_text('Game Instructions', 20, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 50)
-            self.game.draw_text('Mysteryinvaders', 20, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 + 50)
-            self.blit_screen()
-
-
-class CreditsMenu(Menu):
-    def __init__(self, game):
-        Menu.__init__(self, game)
-
-    def display_menu(self):
-        self.run_display = True
-        while self.run_display:
-            self.game.check_events()
-            if self.game.START_KEY or self.game.BACK_KEY:
-                self.game.curr_menu = self.game.main_menu
-                self.run_display = False
-            self.game.display.fill(self.game.BACKGROUND)
-            self.game.draw_text('Credits', 20, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 50)
-            self.game.draw_text('Mysteryinvaders', 20, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 + 50)
-            self.blit_screen()"""

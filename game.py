@@ -4,7 +4,7 @@ from menu import *
 class Game:
     def __init__(self):
         pygame.init()
-        self.running, self.playing = True, False
+        self.running = True
         # define keys to move through the menu, keep track of players actions
         self.UP_KEY, self.DOWN_KEY, self.START_KEY, self.BACK_KEY = False, False, False, False
         self.DISPLAY_W, self.DISPLAY_H = 900, 900
@@ -16,8 +16,6 @@ class Game:
         self.window = pygame.display.set_mode((self.DISPLAY_W, self.DISPLAY_H))
         self.font_name1 = 'fonts/8-BIT WONDER.TTF'
         self.font_name2 = 'fonts/FreeSansBold.ttf'
-        # getter for default font
-        # self.font = pygame.font.get_default_font()
         self.BACKGROUND = (125, 150, 50)
         self.background_img = pygame.image.load('images/heroes/krebsmonster_200.png')
         self.TEXT_COLOR = (250, 250, 250)
@@ -28,24 +26,12 @@ class Game:
         self.current_level = None
         self.level2 = MainMenu(self)
         self.level3 = MainMenu(self)
-        # self.options = GameInstructionsMenu(self)
-        # self.credits = CreditsMenu(self)
         self.curr_menu = self.main_menu
 
 # game loop level1
     def game_loop(self):
         self.current_level.load()
         self.current_level.game_loop(self.window)
-        """if self.START_KEY:
-                self.playing = False
-
-            # reset canvas in painting it a color
-            self.display.fill(self.BACKGROUND)
-            self.draw_text('Thanks for Playing', 40, self.DISPLAY_W / 2, self.DISPLAY_H / 2)
-            self.window.blit(self.display, (0, 0))
-            # shows physically the image on the screen
-            pygame.display.update()
-            self.reset_keys()"""
 
 # game events - player actions, pressed Keys
 
@@ -53,10 +39,10 @@ class Game:
         for event in pygame.event.get():
             # if player wants to quit
             if event.type == pygame.QUIT:
-                self.running, self.playing = False, False
-                # current menu
-                self.curr_menu.run_display = False
-                # if something on the keyboard is pressed
+                pygame.quit()
+                exit()
+
+            # if something on the keyboard is pressed
             if event.type == pygame.KEYDOWN:
                 # enter key press
                 if event.key == pygame.K_RETURN:
