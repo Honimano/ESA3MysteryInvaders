@@ -2,7 +2,7 @@ import pygame
 
 
 
-#backgrounds
+#backgrounds for changes in the levels
 
 background_wasser = pygame.image.load('images/backgrounds/unterwasser1.png')
 background_wiese = pygame.image.load('images/backgrounds/schafwiese_900.png')
