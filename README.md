@@ -1,7 +1,5 @@
 # ESA3MysteryInvaders
 ESA3
-# SA3MysteryInvaders
-
 
 # This is a study project to program "space invaders".
 # It was programmed in python 3.1, using pycharm and pygame.
@@ -13,4 +11,3 @@ ESA3
 # and variations to the number of enemies and bullet velocity.
 # In every level you will see your score counting the enemies you could hit.
 # A game over text will appear, when your hero has been hit by a foe.
-
