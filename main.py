@@ -1,8 +1,9 @@
 from game import Game
-import pygame
+
 
 # Title: Projekt ESA3 - Mytseryinvaders
-# @author Peggy Kleinert Matrikelnummer: 20202335
+__author__ = 'Peggy Kleinert'
+# Matrikelnummer: 20202335
 # References:
 # Musiktitel Copyright: von Funny Puppies - GEMAfreie Musik von https://audiohub.de
 # Musiktitel Copyright: Zombie Invasion (2015) - GEMAfreie Musik von https://audiohub.de

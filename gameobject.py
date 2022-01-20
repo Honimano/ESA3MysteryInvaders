@@ -2,8 +2,9 @@ import pygame
 import random
 from enum import Enum
 
-# class GameObject has a Player and an Enemy, and a Bullet, also we need a bullet state - > the bullets actually are donuts...so its more foodwars, then real shooting ;)
+
 class GameObject:
+    '''class GameObject has a Player and an Enemy, and a Bullet, also we need a bullet state - > the bullets actually are donuts...so its more foodwars, then real shooting ;)'''
     def __init__(self, x, y, x_change, y_change):
         self.x = x
         self.y = y

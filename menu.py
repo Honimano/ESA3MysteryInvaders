@@ -72,8 +72,9 @@ class MainMenu(Menu):
             # after finishing a loop blit screen again
             self.blit_screen()
 
-    # function to move the cursor up and down the different options
+
     def move_cursor(self):
+        '''function to move the cursor up and down the different options'''
         if self.game.DOWN_KEY:
             if self.state == 'Start Game Level 1':
                 self.cursor_rect.midtop = (self.level2_x + self.offset, self.level2_y)
@@ -96,6 +97,9 @@ class MainMenu(Menu):
                 self.state = 'Start Game Level 3'
 
     def check_input(self):
+        '''function to check the User input and define what happens next when moving through the menu, for example, when the START_Key is being pressed,
+        the chosen level should start the game, and there is several
+        pngs to set via the Level class that change in every level '''
         self.move_cursor()
         if self.game.START_KEY:
             if self.state == 'Start Game Level 1':
